@@ -1,0 +1,1 @@
+pip install -q "transformers>=4.40" "peft>=0.10" "trl>=0.8" datasets bitsandbytes accelerate
