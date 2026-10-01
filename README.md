@@ -1,7 +1,14 @@
 # LoRA Fine-Tuning + 4-bit Quantization
 
-Fine-tune **TinyLlama-1.1B-Chat** on 1,000 instruction examples using **LoRA**
-(Low-Rank Adaptation), with the base model loaded in **4-bit** (QLoRA setup).
+A script to fine-tune **TinyLlama-1.1B-Chat** on 1,000 instruction examples
+using **LoRA** (Low-Rank Adaptation), with the base model loaded in **4-bit**
+(QLoRA setup) — plus a CPU script that verifies the pipeline mechanics.
+
+> **Status:** the training script (`train_lora.py`) is written and its
+> mechanics are verified on CPU (see `RESULTS.md`), but the full
+> TinyLlama-1.1B GPU fine-tune has **not** been run yet — it needs a CUDA
+> GPU. The loss/eval numbers below describe what the script *does*, not
+> completed results.
 
 ## Why this project
 
@@ -10,8 +17,9 @@ Fine-tune **TinyLlama-1.1B-Chat** on 1,000 instruction examples using **LoRA**
 - **Quantization for deployment:** 4-bit NF4 base + tiny adapter = a fine-tuned
   model that ships ~100x smaller than a full fp16 copy — directly relevant to
   on-device/edge ML.
-- **Honest evaluation:** the script prints trainable-param %, compares base vs.
-  fine-tuned generations, and reports adapter-vs-full-model size.
+- **Evaluation built in:** the script prints trainable-param %, compares base vs.
+  fine-tuned generations, and reports adapter-vs-full-model size (when run on
+  a GPU — see `RESULTS.md` for what has actually been verified so far).
 
 ## Run it (Google Colab, free T4 GPU)
 
